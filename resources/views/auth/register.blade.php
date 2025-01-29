@@ -1,67 +1,78 @@
 @extends('partials.layout')
 @section('title', 'Register')
 @section('content')
-    <div class="container mx-auto">
-        <div class="card bg-base-300 w-1/2 shadow-xl mx-auto">
-            <div class="card-body">
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
-                    <label class="form-control w-full">
-                        <div class="label">
-                            <span class="label-text">Name</span>
-
-                        </div>
-                        <input name="name" type="text" placeholder="Name" value="{{old('name')}}" class="input input-bordered @error('name') input-error @enderror w-full" required
-                            autofocus autocomplete="name" />
-                        <div class="label">
-                            @error('name')
-                                <span class="label-text-alt text-error">{{$message}}</span>
-                            @enderror
-                        </div>
+<div class="container mx-auto px-4 py-8">
+    <div class="card bg-base-100 shadow-xl max-w-md mx-auto">
+        <div class="card-body">
+            <h2 class="card-title text-2xl font-bold mb-4">Register</h2>
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <div class="form-control w-full mb-4">
+                    <label class="label">
+                        <span class="label-text">Name</span>
                     </label>
-                    <label class="form-control w-full">
-                        <div class="label">
-                            <span class="label-text">Email</span>
+                    <input name="name" type="text" placeholder="Name" value="{{ old('name') }}"
+                        class="input input-bordered w-full @error('name') input-error @enderror" required autofocus
+                        autocomplete="name" />
+                    @error('name')
+                        <label class="label">
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        </label>
+                    @enderror
+                </div>
 
-                        </div>
-                        <input name="email" type="email" placeholder="Email" value="{{old('email')}}" class="input input-bordered @error('email') input-error @enderror w-full" required autocomplete="username" />
-                        <div class="label">
-                            @error('email')
-                                <span class="label-text-alt text-error">{{$message}}</span>
-                            @enderror
-                        </div>
+                <div class="form-control w-full mb-4">
+                    <label class="label">
+                        <span class="label-text">Email</span>
                     </label>
-                    <label class="form-control w-full">
-                        <div class="label">
-                            <span class="label-text">Password</span>
+                    <input name="email" type="email" placeholder="Email" value="{{ old('email') }}"
+                        class="input input-bordered w-full @error('email') input-error @enderror" required
+                        autocomplete="username" />
+                    @error('email')
+                        <label class="label">
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        </label>
+                    @enderror
+                </div>
 
-                        </div>
-                        <input name="password" type="password" placeholder="Password" class="input input-bordered @error('password') input-error @enderror w-full" required autocomplete="new-password"  />
-                        <div class="label">
-                            @error('password')
-                                <span class="label-text-alt text-error">{{$message}}</span>
-                            @enderror
-                        </div>
+                <div class="form-control w-full mb-4">
+                    <label class="label">
+                        <span class="label-text">Password</span>
                     </label>
-                    <label class="form-control w-full">
-                        <div class="label">
-                            <span class="label-text">Confirm Password</span>
+                    <input name="password" type="password" placeholder="Password"
+                        class="input input-bordered w-full @error('password') input-error @enderror" required
+                        autocomplete="new-password" />
+                    @error('password')
+                        <label class="label">
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        </label>
+                    @enderror
+                </div>
 
-                        </div>
-                        <input name="password_confirmation" type="password" placeholder="Confirm Password" class="input input-bordered @error('password_confirmation') input-error @enderror w-full" required autocomplete="new-password"  />
-                        <div class="label">
-                            @error('password_confirmation')
-                                <span class="label-text-alt text-error">{{$message}}</span>
-                            @enderror
-                        </div>
+                <div class="form-control w-full mb-6">
+                    <label class="label">
+                        <span class="label-text">Confirm Password</span>
                     </label>
-                    <div class="flex justify-end items-center gap-2">
-                        <a href="{{ route('login')}}">Already registered?</a>
-                        <input type="submit" class="btn btn-primary" value="Register">
-                        {{-- <button class="btn btn-primary">Register</button> --}}
-                    </div>
-                </form>
-            </div>
+                    <input name="password_confirmation" type="password" placeholder="Confirm Password"
+                        class="input input-bordered w-full @error('password_confirmation') input-error @enderror"
+                        required autocomplete="new-password" />
+                    @error('password_confirmation')
+                        <label class="label">
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        </label>
+                    @enderror
+                </div>
+
+                <div class="flex items-center justify-between mt-6">
+                    <a href="{{ route('login') }}" class="btn btn-ghost">
+                        Already Registered?
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        Register
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 @endsection
