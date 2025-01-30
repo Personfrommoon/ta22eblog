@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
@@ -16,6 +17,7 @@ Route::post('/admin/posts', [PostController::class, 'store'])->name('posts.store
 Route::get('/admin/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 Route::post('/admin/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 Route::post('/admin/posts/{post}/delete', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::post('/post/{post}/comment', [CommentController::class, 'store'])->name('comment.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
